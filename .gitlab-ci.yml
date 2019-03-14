@@ -29,6 +29,6 @@ deploy_production:
   environment:
     name: production
     url: http://68.183.178.18
-  when: manual
+  when: on_success
   only:
     - master

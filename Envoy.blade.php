@@ -2,7 +2,7 @@
 @setup
     $repository = 'git@gitlab.com:ericksuryadinata/informatika-service.git';
     $releases_dir = '/var/www/informatika-service/releases';
-    $app_dir = '/var/www/informatika-service/current';
+    $app_dir = '/var/www/informatika-service/';
     $release = date('dmYHis');
     $new_release_dir = $releases_dir .'/'. $release;
 @endsetup
