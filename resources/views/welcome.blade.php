@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel Ngetest Auto Deploy Anu, durung ganti
+                    Laravel
                 </div>
 
                 <div class="links">

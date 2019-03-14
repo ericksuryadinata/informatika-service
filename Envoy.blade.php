@@ -1,8 +1,8 @@
 @servers(['web' => 'gitlab@68.183.178.18'])
 @setup
     $repository = 'git@gitlab.com:ericksuryadinata/informatika-service.git';
-    $releases_dir = '/var/www/informatika-service-releases';
-    $app_dir = '/var/www/informatika-service-current';
+    $releases_dir = '/var/www/informatika-service/releases';
+    $app_dir = '/var/www/informatika-service/';
     $release = date('dmYHis');
     $new_release_dir = $releases_dir .'/'. $release;
 @endsetup
