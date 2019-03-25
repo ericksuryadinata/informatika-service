@@ -37,5 +37,5 @@
     cd $new_release_dir
     chmod 777 -R bootstrap/cache
     echo 'Done'
-@endta
+@endtask
 
