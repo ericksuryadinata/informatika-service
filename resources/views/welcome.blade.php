@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel Test, Ganti Gak Hayoo
+                    ENDPOINT API BOT INFORMATIKA
                 </div>
 
                 <div class="links">
