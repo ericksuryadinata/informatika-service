@@ -26,6 +26,7 @@ deploy_production:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
     - ~/.composer/vendor/bin/envoy run deploy
+    - ls
   environment:
     name: production
     url: http://bot.labtif-untagsby.com
