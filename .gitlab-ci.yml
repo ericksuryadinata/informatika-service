@@ -1,4 +1,4 @@
-# image: registry.gitlab.com/ericksuryadinata/informatika-service:latest
+image: registry.gitlab.com/ericksuryadinata/informatika-service:latest
 services:
   - mysql:5.7
 variables:
@@ -22,7 +22,6 @@ composer:
   stage: preparation
   services:
     - mysql:5.7
-  image: edbizarro/gitlab-ci-pipeline-php:7.2
   script:
     - php -v
     - composer install --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
@@ -42,7 +41,6 @@ db-seeding:
   stage: building
   services:
     - mysql:5.7
-  image: edbizarro/gitlab-ci-pipeline-php:7.2
   # Download the artifacts for these jobs
   dependencies:
     - composer
@@ -58,7 +56,6 @@ phpunit:
   stage: testing
   services:
     - mysql:5.7
-  image: edbizarro/gitlab-ci-pipeline-php:7.2
   # Download the artifacts for these jobs
   dependencies:
     - composer
@@ -85,7 +82,6 @@ codestyle:
 
 phpcpd:
   stage: testing
-  image: edbizarro/gitlab-ci-pipeline-php:7.2
   script:
     - test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
     - php phpcpd.phar app/ --min-lines=50
@@ -96,7 +92,6 @@ phpcpd:
 
 sensiolabs:
   stage: security
-  image: edbizarro/gitlab-ci-pipeline-php:7.2
   script:
     - test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
     - cd security-checker
@@ -108,7 +103,7 @@ sensiolabs:
       - security-checker/
 
 # unit_test:
-#   stage: test
+#   stage: testing
 #   image: registry.gitlab.com/ericksuryadinata/informatika-service:latest
 #   script:
 #     - composer install
