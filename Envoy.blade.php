@@ -34,6 +34,8 @@
     echo 'Linking current release'
     ln -nfs {{ $new_release_dir }} {{ $app_dir }}/current
     echo Changing bootstrap permissions""
+    cd $new_release_dir
     chmod 777 -R bootstrap/cache
     echo 'Done'
-@endtask
+@endta
+
