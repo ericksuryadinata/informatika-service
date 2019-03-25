@@ -9,7 +9,9 @@ variables:
 
 stages:
   - preparation
-  - test
+  - building
+  - testing
+  - security
   - deploy
 
 
@@ -105,15 +107,15 @@ sensiolabs:
     paths:
       - security-checker/
 
-unit_test:
-  stage: test
-  image: registry.gitlab.com/ericksuryadinata/informatika-service:latest
-  script:
-    - composer install
-    - cp .env.example .env
-    - php artisan key:generate
-    - php artisan migrate
-    - vendor/bin/phpunit
+# unit_test:
+#   stage: test
+#   image: registry.gitlab.com/ericksuryadinata/informatika-service:latest
+#   script:
+#     - composer install
+#     - cp .env.example .env
+#     - php artisan key:generate
+#     - php artisan migrate
+#     - vendor/bin/phpunit
 
 deploy_production:
   stage: deploy
