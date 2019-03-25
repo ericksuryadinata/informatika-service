@@ -28,7 +28,7 @@ deploy_production:
     - ~/.composer/vendor/bin/envoy run deploy
   environment:
     name: production
-    url: http://68.183.178.18
+    url: http://bot.labtif-untagsby.com
   when: on_success
   only:
     - master
