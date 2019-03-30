@@ -48,7 +48,7 @@ db-seeding:
     - php artisan migrate:fresh --seed
   artifacts:
     paths:
-      # - ./storage/logs # for debugging
+      - ./storage/logs # for debugging
     expire_in: 1 days
     when: on_failure
 
@@ -69,26 +69,26 @@ phpunit:
     # - cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
   artifacts:
     paths:
-      # - ./storage/logs # for debugging
+      - ./storage/logs # for debugging
     expire_in: 1 days
     when: on_failure
 
-codestyle:
-  stage: testing
-  image: lorisleiva/laravel-docker
-  script:
-    - phpcs --standard=PSR2 --extensions=php app
-  dependencies: []
+# codestyle:
+#   stage: testing
+#   image: lorisleiva/laravel-docker
+#   script:
+#     - phpcs --standard=PSR2 --extensions=php app
+#   dependencies: []
 
-phpcpd:
-  stage: testing
-  script:
-    - test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
-    - php phpcpd.phar app/ --min-lines=50
-  dependencies: []
-  cache:
-    paths:
-      - phpcpd.phar
+# phpcpd:
+#   stage: testing
+#   script:
+#     - test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
+#     - php phpcpd.phar app/ --min-lines=50
+#   dependencies: []
+#   cache:
+#     paths:
+#       - phpcpd.phar
 
 sensiolabs:
   stage: security
