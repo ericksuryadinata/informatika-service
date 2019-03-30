@@ -7,6 +7,7 @@
     $new_release_dir = $releases_dir .'/'. $release;
 @endsetup
 @story('deploy')
+    remove_release_before
     clone_repository
     run_composer
     update_symlinks
@@ -14,6 +15,9 @@
 @task('clone_repository')
     echo 'Cloning repository'
     [ -d {{ $releases_dir }} ] || mkdir {{ $releases_dir }}
+    echo 'deleting past release'
+    cd {{ $releases_dir }}
+    rm -rf *
     git clone --depth 1 {{ $repository }} {{ $new_release_dir }}
     echo 'Done'
 @endtask
