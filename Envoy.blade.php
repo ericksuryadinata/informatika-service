@@ -7,7 +7,6 @@
     $new_release_dir = $releases_dir .'/'. $release;
 @endsetup
 @story('deploy')
-    remove_release_before
     clone_repository
     run_composer
     update_symlinks
