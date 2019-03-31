@@ -82,6 +82,8 @@
             <div class="content">
                 <div class="title m-b-md">
                     ENDPOINT API BOT INFORMATIKA
+                    <br>
+                    UNIVERSITAS 17 AGUSTUS 1945 SURABAYA
                 </div>
             </div>
         </div>
