@@ -15,6 +15,6 @@ use Illuminate\Http\Request;
 
 Route::namespace('Telegram')->group(function(){
     Route::get('get-me', 'TelegramController@getMe')->name('get-me');
-    Route::get('set-hook', 'TelegramController@setWebHook')->name('webhook');
+    Route::get('set-hook', 'TelegramController@setWebHook');
     Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook', 'TelegramController@handleRequest');
 });

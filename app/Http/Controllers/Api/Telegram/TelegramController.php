@@ -43,5 +43,6 @@ class TelegramController extends Controller
         $this->chat_id = $request['message']['chat']['id'];
         $this->username = $request['message']['from']['username'];
         $this->text = $request['message']['text'];
+        $this->sendMessage();
     }
 }
