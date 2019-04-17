@@ -26,7 +26,7 @@ class TelegramController extends Controller
         return $response == true ? redirect()->back() : dd($response);
     }
 
-    public function sendMessage()
+    public function sendMessage($message, $parse_html = false)
     {
         $data = [
             'chat_id' => $this->chat_id,
