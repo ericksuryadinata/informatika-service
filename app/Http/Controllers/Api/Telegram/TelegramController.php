@@ -31,11 +31,12 @@ class TelegramController extends Controller
         $updates = Telegram::getWebhookUpdates();
         // $updates = json_encode($hooks);
         $this->chat_id =  $updates->getMessage()->getChat()->getId();
+        $this->username = $updates->getMessage()->getFrom()->getUsername();
         $this->text = $updates->getMessage()->getText();
         if($this->text == 'hi'){
-            $this->sendMessage('hello');
+            $this->sendMessage('hello '.$this->username);
         }else{
-            $this->sendMessage('good afternoon');
+            $this->sendMessage('sayang sekali '.$this->username.' perinta tersebut masih belum saya pahami :(');
         }
     }
 }
