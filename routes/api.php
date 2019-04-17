@@ -17,8 +17,4 @@ Route::namespace('Telegram')->group(function(){
     Route::get('get-me', 'TelegramController@getMe');
     Route::get('set-hook', 'TelegramController@setWebHook');
     Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook','TelegramController@handleRequest');
-    Route::post(env('TELEGRAM_BOT_TOKEN') . '/testhook',function(){
-        $updates = Telegram::getWebhookUpdates();
-        return 'ok';
-    });
 });

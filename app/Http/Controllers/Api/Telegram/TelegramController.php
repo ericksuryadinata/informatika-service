@@ -35,17 +35,17 @@ class TelegramController extends Controller
 
         if ($parse_html) $data['parse_mode'] = 'HTML';
 
-        Telegram::sendMessage($data);
+        $response = Telegram::sendMessage($data);
+        $messageId = $response->getMessageId();
+        return 'ok';
     }
 
     public function handleRequest()
     {
         $updates = Telegram::getWebhookUpdates();
         // $updates = json_encode($hooks);
-        dump($updates);
-        $this->chat_id = $updates['message']['chat']['id'];
-        $this->username = $updates['message']['from']['username'];
-        $this->text = $updates['message']['text'];
+        $this->chat_id =  $updates->getMessage()->getChat()->getId();
+        $this->text = $updates->getMessage()->getMessage();
         if($this->text == 'hi'){
             $this->sendMessage('hello');
         }else{
