@@ -30,7 +30,7 @@ class TelegramController extends Controller
     {
         $response = Telegram::sendMessage([
             'chat_id' => $this->chat_id,
-            'text' => 'Hello '.$this->username,
+            'text' => 'Hello '.$this->text,
         ]);
         dd($response);
     }
@@ -40,9 +40,8 @@ class TelegramController extends Controller
         $updates = Telegram::getWebhookUpdates();
         dump($updates);
         dump($request);
-        $this->chat_id = $request['message']['chat']['id'];
-        $this->username = $request['message']['from']['username'];
-        $this->text = $request['message']['text'];
+        $this->chat_id = $request->chat_id;
+        $this->text = $request->text;
         $this->sendMessage();
     }
 }
