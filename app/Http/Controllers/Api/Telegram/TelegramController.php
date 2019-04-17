@@ -12,20 +12,6 @@ class TelegramController extends Controller
     protected $username;
     protected $text;
 
-    public function getMe()
-    {
-        $response = Telegram::getMe();
-        return $response;
-    }
-
-    public function setWebHook()
-    {
-        $url = 'https://bot.labtif-untagsby.com/' . env('TELEGRAM_BOT_TOKEN') . '/webhook';
-        $response = Telegram::setWebhook(['url' => $url]);
-
-        return $response == true ? redirect()->back() : dd($response);
-    }
-
     public function sendMessage($message, $parse_html = false)
     {
         $data = [
