@@ -40,8 +40,8 @@ class TelegramController extends Controller
 
     public function handleRequest()
     {
-        $hooks = Telegram::getWebhookUpdates();
-        $updates = json_encode($hooks);
+        $updates = Telegram::getWebhookUpdates();
+        // $updates = json_encode($hooks);
         dump($updates);
         $this->chat_id = $updates['message']['chat']['id'];
         $this->username = $updates['message']['from']['username'];
