@@ -45,7 +45,7 @@ class TelegramController extends Controller
         $updates = Telegram::getWebhookUpdates();
         // $updates = json_encode($hooks);
         $this->chat_id =  $updates->getMessage()->getChat()->getId();
-        $this->text = $updates->getMessage()->getMessage();
+        $this->text = $updates->getMessage()->getText();
         if($this->text == 'hi'){
             $this->sendMessage('hello');
         }else{
