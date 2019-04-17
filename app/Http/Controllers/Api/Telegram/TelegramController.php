@@ -38,13 +38,13 @@ class TelegramController extends Controller
         Telegram::sendMessage($data);
     }
 
-    public function handleRequest(Request $request)
+    public function handleRequest()
     {
         $updates = Telegram::getWebhookUpdates();
         dump($updates);
-        $this->chat_id = $request['message']['chat']['id'];
-        $this->username = $request['message']['from']['username'];
-        $this->text = $request['message']['text'];
+        $this->chat_id = $updates['message']['chat']['id'];
+        $this->username = $updates['message']['from']['username'];
+        $this->text = $updates['message']['text'];
         if($this->text == 'hi'){
             $this->sendMessage('hello');
         }else{
