@@ -45,28 +45,10 @@ class TelegramController extends Controller
         $this->chat_id = $request['message']['chat']['id'];
         $this->username = $request['message']['from']['username'];
         $this->text = $request['message']['text'];
-
-        switch ($this->text) {
-            case '/start':
-            case '/menu':
-                $this->showMenu();
-                break;
-            default:
-                $this->showMenu();
+        if($this->text == 'hi'){
+            $this->sendMessage('hello');
+        }else{
+            $this->sendMessage('good afternoon');
         }
-    }
-
-    public function showMenu($info = null)
-    {
-        $message = '';
-        if ($info) {
-            $message .= $info . chr(10);
-        }
-        $message .= '/menu' . chr(10);
-        $message .= '/getGlobal' . chr(10);
-        $message .= '/getTicker' . chr(10);
-        $message .= '/getCurrencyTicker' . chr(10);
-
-        $this->sendMessage($message);
     }
 }
