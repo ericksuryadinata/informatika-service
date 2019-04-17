@@ -8,6 +8,10 @@ use Telegram;
 
 class TelegramController extends Controller
 {
+    protected $chat_id;
+    protected $username;
+    protected $text;
+
     public function getMe()
     {
         $response = Telegram::getMe();
@@ -20,5 +24,24 @@ class TelegramController extends Controller
         $response = Telegram::setWebhook(['url' => $url]);
 
         return $response;
+    }
+
+    public function sendMessage()
+    {
+        if($this->text == 'hi'){
+            $response = Telegram::sendMessage([
+                'chat_id' => $this->chat_id,
+                'text' => 'Hello '.$this->username,
+            ]);
+
+            $messageId = $response->getMessageId();
+        }
+    }
+
+    public function handleRequest(Request $request)
+    {
+        $this->chat_id = $request['message']['chat']['id'];
+        $this->username = $request['message']['from']['username'];
+        $this->text = $request['message']['text'];
     }
 }
