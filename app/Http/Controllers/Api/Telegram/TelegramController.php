@@ -28,20 +28,44 @@ class TelegramController extends Controller
 
     public function sendMessage()
     {
-        $response = Telegram::sendMessage([
+        $data = [
             'chat_id' => $this->chat_id,
-            'text' => 'Hello '.$this->text,
-        ]);
-        dd($response);
+            'text' => $message,
+        ];
+
+        if ($parse_html) $data['parse_mode'] = 'HTML';
+
+        Telegram::sendMessage($data);
     }
 
     public function handleRequest(Request $request)
     {
         $updates = Telegram::getWebhookUpdates();
-        dump($updates);
-        dump($request);
-        $this->chat_id = $request->chat_id;
-        $this->text = $request->text;
-        $this->sendMessage();
+        $this->chat_id = $request['message']['chat']['id'];
+        $this->username = $request['message']['from']['username'];
+        $this->text = $request['message']['text'];
+
+        switch ($this->text) {
+            case '/start':
+            case '/menu':
+                $this->showMenu();
+                break;
+            default:
+                $this->checkDatabase();
+        }
+    }
+
+    public function showMenu($info = null)
+    {
+        $message = '';
+        if ($info) {
+            $message .= $info . chr(10);
+        }
+        $message .= '/menu' . chr(10);
+        $message .= '/getGlobal' . chr(10);
+        $message .= '/getTicker' . chr(10);
+        $message .= '/getCurrencyTicker' . chr(10);
+
+        $this->sendMessage($message);
     }
 }
