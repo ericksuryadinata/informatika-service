@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('Telegram')->group(function(){
+    Route::get('get-me', 'TelegramController@getMe')->name('get-me');
+    Route::get('set-hook', 'TelegramController@setWebHook')->name('webhook');
 });
