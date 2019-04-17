@@ -23,19 +23,15 @@ class TelegramController extends Controller
         $url = 'https://bot.labtif-untagsby.com/' . env('TELEGRAM_BOT_TOKEN') . '/webhook';
         $response = Telegram::setWebhook(['url' => $url]);
 
-        return $response;
+        return $response == true ? redirect()->back() : dd($response);
     }
 
     public function sendMessage()
     {
-        if($this->text == 'hi'){
-            $response = Telegram::sendMessage([
-                'chat_id' => $this->chat_id,
-                'text' => 'Hello '.$this->username,
-            ]);
-
-            $messageId = $response->getMessageId();
-        }
+        $response = Telegram::sendMessage([
+            'chat_id' => $this->chat_id,
+            'text' => 'Hello '.$this->username,
+        ]);
     }
 
     public function handleRequest(Request $request)
