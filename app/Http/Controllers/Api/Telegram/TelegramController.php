@@ -51,7 +51,7 @@ class TelegramController extends Controller
                 $this->showMenu();
                 break;
             default:
-                $this->checkDatabase();
+                $this->showMenu();
         }
     }
 
