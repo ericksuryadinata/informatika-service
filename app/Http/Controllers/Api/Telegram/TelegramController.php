@@ -65,10 +65,10 @@ class TelegramController extends Controller
             if($random == 0){
                 $this->sendMessage('hello '.$this->username);
             }else{
-                $this->sendMessage($greeting.$this->username.' '.$this->firstname.' '.$this->lastname);
+                $this->sendMessage($greeting.$this->firstname.' '.$this->lastname);
             }
         }else{
-            $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :(');
+            $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :(, update selanjutnya menerapkan NLP disini');
         }
     }
 }
