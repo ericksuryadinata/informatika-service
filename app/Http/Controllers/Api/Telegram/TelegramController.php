@@ -28,14 +28,13 @@ class TelegramController extends Controller
         return 'ok';
     }
 
-    public function commandHandler(){
-        $commands = Telegram::commandsHandler(true);
-        return 'ok';
+    public function startMessage(){
+        $response = 'Selamat Datang di Universitas 17 Agustus 1945 BOT, silahkan ketik apapun pesan yang anda minta';
+        return $response;
     }
 
     public function handleRequest()
     {
-        $this->commandHandler();
         $updates = Telegram::getWebhookUpdates();
         // $updates = json_encode($hooks);
         $this->chat_id =  $updates->getMessage()->getChat()->getId();
@@ -43,6 +42,11 @@ class TelegramController extends Controller
         $this->firstname = $updates->getMessage()->getFrom()->getFirstName();
         $this->lastname = $updates->getMessage()->getFrom()->getLastName();
         $this->text = $updates->getMessage()->getText();
+
+        if($this->text == '/start'){
+            $this->sendMessage($this->startMessage());
+        }
+        
         if($this->text == 'hi'){
             $time = time();
             $hour = date('G',$time);
