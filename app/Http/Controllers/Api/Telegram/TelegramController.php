@@ -122,7 +122,7 @@ class TelegramController extends Controller
                 $this->sendMessage($response->messages);
                 break;
             default:
-                $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :(, update selanjutnya menerapkan NLP disini');
+                $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :( , <br> update selanjutnya menerapkan NLP disini');
                 break;
         }
     }
