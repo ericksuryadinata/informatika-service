@@ -28,8 +28,14 @@ class TelegramController extends Controller
         return 'ok';
     }
 
+    public function commandHandler(){
+        $commands = Telegram::commandsHandler(true);
+        return 'ok';
+    }
+
     public function handleRequest()
     {
+        $this->commandHandler();
         $updates = Telegram::getWebhookUpdates();
         // $updates = json_encode($hooks);
         $this->chat_id =  $updates->getMessage()->getChat()->getId();
