@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Telegram;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\InformasiSeminarTa;
 use Telegram;
 
 class TelegramController extends Controller
@@ -61,6 +62,39 @@ class TelegramController extends Controller
         return $greeting;
     }
 
+    public function findSeminar($key){
+        $response = '';
+        if(is_numeric($key)){
+            $seminar = InformasiSeminarTa::whereNbi($key)->first();
+        }else{
+            $seminar = InformasiSeminarTa::where('nama','like','%'.$key.'%')->first();
+        }
+
+        if($seminar){
+            $data = 'Data Peserta Seminar <br>';
+            $data .= 'Nama : '.$seminar->nama.'<br>';
+            $data .= 'NBI : '.$seminar->nbi.'<br>';
+            $data .= 'Dengan judul seminar <b>'.$seminar->judul.'</b><br>';
+            $data .= 'Seminar dilaksanakan di ruang : '.$seminar->ruang.' pada tanggal '.$seminar->tanggal.' dimulai pukul 09.00 WIB';
+            $data .= 'Dengan dosen penguji sebagai berikut : <br>';
+            $data .= 'Ketua Penguji : '.$seminar->ketua_penguji.'<br>';
+            $data .= 'Anggota Penguji 1 : '.$seminar->ketua_penguji.'<br>';
+            $data .= 'Anggota Penguji 2 : '.$seminar->ketua_penguji.'<br><br>';
+            $data .= '<b>Diharapkan Datang Tepat Waktu</b>';
+            $response = [
+                'status' => 'success',
+                'messages' => $data
+            ];
+        }else{
+            $response = [
+                'status' => 'error',
+                'messages' => 'Pencarian seminar TA untuk '.$key.' Tidak ditemukan'
+            ];
+        }
+
+        return json_encode($response);
+    }
+
     public function handleRequest()
     {
         $updates = Telegram::getWebhookUpdates();
@@ -71,12 +105,20 @@ class TelegramController extends Controller
         $this->lastname = $updates->getMessage()->getFrom()->getLastName();
         $this->text = $updates->getMessage()->getText();
         $text = strtolower($this->text);
+        preg_match('/(jadwal seminar) (.+)/', $text, $output);
+        if(count($output) > 0){
+            $text = $output[1]; // command
+            $key = $output[2]; // nbi or maybe name
+        }
         switch ($text) {
             case '/start':
                 $this->sendMessage($this->startMessage());
                 break;
             case 'hi':
                 $this->sendMessage($this->greeting().$this->firstname.' '.$this->lastname);
+            case 'jadwal seminar':
+                $seminar = $this->findSeminar($key);
+                $this->sendMessage($response->messages);
             default:
                 $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :(, update selanjutnya menerapkan NLP disini');
                 break;
