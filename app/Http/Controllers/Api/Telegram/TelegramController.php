@@ -116,9 +116,11 @@ class TelegramController extends Controller
                 break;
             case 'hi':
                 $this->sendMessage($this->greeting().$this->firstname.' '.$this->lastname);
+                break;
             case 'jadwal seminar':
                 $seminar = $this->findSeminar($key);
                 $this->sendMessage($response->messages);
+                break;
             default:
                 $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :(, update selanjutnya menerapkan NLP disini');
                 break;
