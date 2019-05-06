@@ -120,7 +120,7 @@ class TelegramController extends Controller
             case 'jadwal seminar':
                 $seminar = $this->findSeminar($key);
                 // $this->sendMessage('masuk sini lah');
-                $this->sendMessage($response->messages);
+                $this->sendMessage($seminar->messages);
                 break;
             default:
                 $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :( , <br> update selanjutnya menerapkan NLP disini');
