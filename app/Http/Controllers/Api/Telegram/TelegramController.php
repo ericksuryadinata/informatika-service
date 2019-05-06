@@ -65,7 +65,11 @@ class TelegramController extends Controller
     public function findSeminar($key){
         $data = '';
         if(is_numeric($key)){
-            $seminar = InformasiSeminarTa::where('nbi','like','%'.$key.'%')->first();
+            if(strlen($key) > 4){
+                $seminar = InformasiSeminarTa::whereNbi($key)->first();
+            }else{
+                $seminar = InformasiSeminarTa::where('nbi','like','%'.$key)->first();
+            }
         }else{
             $seminar = InformasiSeminarTa::where('nama','like','%'.$key.'%')->first();
         }
