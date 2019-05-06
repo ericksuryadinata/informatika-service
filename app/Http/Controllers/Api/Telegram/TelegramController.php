@@ -79,7 +79,7 @@ class TelegramController extends Controller
             $data .= 'Dengan dosen penguji sebagai berikut : '.PHP_EOL;
             $data .= 'Ketua Penguji : '.$seminar->ketua_penguji.PHP_EOL;
             $data .= 'Anggota Penguji 1 : '.$seminar->ketua_penguji.PHP_EOL;
-            $data .= 'Anggota Penguji 2 : '.$seminar->ketua_penguji.'<br>'.PHP_EOL;
+            $data .= 'Anggota Penguji 2 : '.$seminar->ketua_penguji.PHP_EOL.PHP_EOL;
             $data .= '<b>Diharapkan Datang Tepat Waktu</b>';
         }else{
             $data = 'Pencarian seminar TA untuk '.$key.' Tidak ditemukan';
@@ -112,7 +112,7 @@ class TelegramController extends Controller
                 break;
             case 'jadwal seminar':
                 $seminar = $this->findSeminar($key);
-                $this->sendMessage($seminar);
+                $this->sendMessage($seminar,true);
                 break;
             default:
                 $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :( , <br> update selanjutnya menerapkan NLP disini');
