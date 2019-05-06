@@ -40,7 +40,7 @@ class TelegramController extends Controller
         $greeting = "Hallo";
         if ($hour>=0 && $hour<=11)
         {
-            $greeting = "Selamat Pagi :)";
+            $greeting = "Selamat Pagi :) ";
         }
         elseif ($hour >=12 && $hour<=14)
         {
@@ -119,6 +119,7 @@ class TelegramController extends Controller
                 break;
             case 'jadwal seminar':
                 $seminar = $this->findSeminar($key);
+                $this->sendMessage('masuk sini lah');
                 $this->sendMessage($response->messages);
                 break;
             default:
