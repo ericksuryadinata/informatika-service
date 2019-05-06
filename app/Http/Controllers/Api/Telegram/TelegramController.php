@@ -22,10 +22,10 @@ class TelegramController extends Controller
             'text' => $message,
         ];
 
-        if ($parse_html) $data['parse_mode'] = 'HTML';
+        if ($parse_html) $data['parse_mode'] = 'html';
 
         $response = Telegram::sendMessage($data);
-        $messageId = $response->getMessageId();
+        // $messageId = $response->getMessageId();
         return 'ok';
     }
 
@@ -71,15 +71,15 @@ class TelegramController extends Controller
         }
 
         if($seminar){
-            $data = 'Data Peserta Seminar <br>';
-            $data .= 'Nama : '.$seminar->nama.'<br>';
-            $data .= 'NBI : '.$seminar->nbi.'<br>';
-            $data .= 'Dengan judul seminar <b>'.$seminar->judul.'</b><br>';
+            $data = 'Data Peserta Seminar'.PHP_EOL;
+            $data .= 'Nama : '.$seminar->nama.PHP_EOL;
+            $data .= 'NBI : '.$seminar->nbi.PHP_EOL;
+            $data .= 'Dengan judul seminar <b>'.$seminar->judul.'</b>'.PHP_EOL;
             $data .= 'Seminar dilaksanakan di ruang : '.$seminar->ruang.' pada tanggal '.$seminar->tanggal.' dimulai pukul 09.00 WIB';
-            $data .= 'Dengan dosen penguji sebagai berikut : <br>';
-            $data .= 'Ketua Penguji : '.$seminar->ketua_penguji.'<br>';
-            $data .= 'Anggota Penguji 1 : '.$seminar->ketua_penguji.'<br>';
-            $data .= 'Anggota Penguji 2 : '.$seminar->ketua_penguji.'<br><br>';
+            $data .= 'Dengan dosen penguji sebagai berikut : '.PHP_EOL;
+            $data .= 'Ketua Penguji : '.$seminar->ketua_penguji.PHP_EOL;
+            $data .= 'Anggota Penguji 1 : '.$seminar->ketua_penguji.PHP_EOL;
+            $data .= 'Anggota Penguji 2 : '.$seminar->ketua_penguji.'<br>'.PHP_EOL;
             $data .= '<b>Diharapkan Datang Tepat Waktu</b>';
         }else{
             $data = 'Pencarian seminar TA untuk '.$key.' Tidak ditemukan';
@@ -112,7 +112,6 @@ class TelegramController extends Controller
                 break;
             case 'jadwal seminar':
                 $seminar = $this->findSeminar($key);
-                // $this->sendMessage('masuk sini lah');
                 $this->sendMessage($seminar);
                 break;
             default:
