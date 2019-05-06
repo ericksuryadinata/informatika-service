@@ -119,7 +119,7 @@ class TelegramController extends Controller
                 break;
             case 'jadwal seminar':
                 $seminar = $this->findSeminar($key);
-                $this->sendMessage('masuk sini lah');
+                // $this->sendMessage('masuk sini lah');
                 $this->sendMessage($response->messages);
                 break;
             default:
