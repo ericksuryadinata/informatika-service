@@ -63,7 +63,7 @@ class TelegramController extends Controller
     }
 
     public function findSeminar($key){
-        $response = '';
+        $data = '';
         if(is_numeric($key)){
             $seminar = InformasiSeminarTa::whereNbi($key)->first();
         }else{
@@ -81,18 +81,11 @@ class TelegramController extends Controller
             $data .= 'Anggota Penguji 1 : '.$seminar->ketua_penguji.'<br>';
             $data .= 'Anggota Penguji 2 : '.$seminar->ketua_penguji.'<br><br>';
             $data .= '<b>Diharapkan Datang Tepat Waktu</b>';
-            $response = [
-                'status' => 'success',
-                'messages' => $data
-            ];
         }else{
-            $response = [
-                'status' => 'error',
-                'messages' => 'Pencarian seminar TA untuk '.$key.' Tidak ditemukan'
-            ];
+            $data = 'Pencarian seminar TA untuk '.$key.' Tidak ditemukan';
         }
 
-        return json_encode($response);
+        return $data;
     }
 
     public function handleRequest()
@@ -120,7 +113,7 @@ class TelegramController extends Controller
             case 'jadwal seminar':
                 $seminar = $this->findSeminar($key);
                 // $this->sendMessage('masuk sini lah');
-                $this->sendMessage($seminar->messages);
+                $this->sendMessage($seminar);
                 break;
             default:
                 $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :( , <br> update selanjutnya menerapkan NLP disini');
