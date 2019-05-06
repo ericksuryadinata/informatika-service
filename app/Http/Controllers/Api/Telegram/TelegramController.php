@@ -106,8 +106,10 @@ class TelegramController extends Controller
         if(count($output) > 0){
             $text = $output[1]; // command
             $key = $output[2]; // nbi or maybe name
-            if($text != 'jadwal seminar'){
-                preg_match('/(seminar ta) (.+)/', $text, $output);
+        }
+        if($text != 'jadwal seminar'){
+            preg_match('/(seminar ta) (.+)/', $text, $output);
+            if(count($output) > 0){
                 $text = $output[1]; // command
                 $key = $output[2]; // nbi or maybe name
             }
