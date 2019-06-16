@@ -13,7 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/',function(){
+    return 'Hello from api';
+});
+
 Route::namespace('Telegram')->group(function(){
-    Route::get('get-me','TelegramController@getMe');
+
     Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook','TelegramController@handleRequest');
+
+    Route::prefix('settings')->group(function(){
+        Route::get('get-me','TelegramController@getMe');
+    });
+
 });

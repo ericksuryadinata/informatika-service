@@ -15,12 +15,6 @@ class TelegramController extends Controller
     protected $lastname;
     protected $text;
 
-    public function getMe()
-    {
-        $response = Telegram::getMe();
-        return $response;
-    }
-
     public function sendMessage($message, $parse_html = false)
     {
         $data = [
