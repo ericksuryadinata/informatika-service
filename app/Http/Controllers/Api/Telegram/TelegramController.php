@@ -91,43 +91,43 @@ class TelegramController extends Controller
     public function handleRequest()
     {
         $updates = Telegram::getWebhookUpdates();
-        // $updates = json_encode($hooks);
-        $this->chat_id =  $updates->getMessage()->getChat()->getId();
-        $this->username = $updates->getMessage()->getFrom()->getUsername();
-        $this->firstname = $updates->getMessage()->getFrom()->getFirstName();
-        $this->lastname = $updates->getMessage()->getFrom()->getLastName();
-        $this->text = $updates->getMessage()->getText();
-        $text = strtolower($this->text);
-        preg_match('/(jadwal seminar) (.+)/', $text, $output);
-        if (count($output) > 0) {
-            $text = $output[1]; // command
-            $key = $output[2]; // nbi or maybe name
-        }
-        if ($text != 'jadwal seminar') {
-            preg_match('/(seminar ta) (.+)/', $text, $output);
-            if (count($output) > 0) {
-                $text = $output[1]; // command
-                $key = $output[2]; // nbi or maybe name
-            }
-        }
-        switch ($text) {
-            case '/start':
-                $this->sendMessage($this->startMessage());
-                break;
-            case 'hi':
-                $this->sendMessage($this->greeting().$this->firstname.' '.$this->lastname);
-                break;
-            case 'jadwal seminar':
-                $seminar = $this->findSeminar($key);
-                $this->sendMessage($seminar, true);
-                break;
-            case 'seminar ta':
-                $seminar = $this->findSeminar($key);
-                $this->sendMessage($seminar, true);
-                break;
-            default:
-                $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :( , <br> update selanjutnya menerapkan NLP disini', true);
-                break;
-        }
+        $updates = json_encode($hooks);
+        // $this->chat_id =  $updates->getMessage()->getChat()->getId();
+        // $this->username = $updates->getMessage()->getFrom()->getUsername();
+        // $this->firstname = $updates->getMessage()->getFrom()->getFirstName();
+        // $this->lastname = $updates->getMessage()->getFrom()->getLastName();
+        // $this->text = $updates->getMessage()->getText();
+        // $text = strtolower($this->text);
+        // preg_match('/(jadwal seminar) (.+)/', $text, $output);
+        // if (count($output) > 0) {
+        //     $text = $output[1]; // command
+        //     $key = $output[2]; // nbi or maybe name
+        // }
+        // if ($text != 'jadwal seminar') {
+        //     preg_match('/(seminar ta) (.+)/', $text, $output);
+        //     if (count($output) > 0) {
+        //         $text = $output[1]; // command
+        //         $key = $output[2]; // nbi or maybe name
+        //     }
+        // }
+        // switch ($text) {
+        //     case '/start':
+        //         $this->sendMessage($this->startMessage());
+        //         break;
+        //     case 'hi':
+        //         $this->sendMessage($this->greeting().$this->firstname.' '.$this->lastname);
+        //         break;
+        //     case 'jadwal seminar':
+        //         $seminar = $this->findSeminar($key);
+        //         $this->sendMessage($seminar, true);
+        //         break;
+        //     case 'seminar ta':
+        //         $seminar = $this->findSeminar($key);
+        //         $this->sendMessage($seminar, true);
+        //         break;
+        //     default:
+        //         $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :( , <br> update selanjutnya menerapkan NLP disini', true);
+        //         break;
+        // }
     }
 }
