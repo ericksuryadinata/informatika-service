@@ -90,8 +90,9 @@ class TelegramController extends Controller
 
     public function handleRequest()
     {
-        $updates = Telegram::getWebhookUpdates();
+        $hooks = Telegram::getWebhookUpdates();
         $updates = json_encode($hooks);
+        return $updates;
         // $this->chat_id =  $updates->getMessage()->getChat()->getId();
         // $this->username = $updates->getMessage()->getFrom()->getUsername();
         // $this->firstname = $updates->getMessage()->getFrom()->getFirstName();

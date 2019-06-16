@@ -16,9 +16,10 @@ class SettingsController extends Controller
 
     public function setWebHook()
     {
-         $url = 'https://'.env('DOMAIN').'/'. env('TELEGRAM_BOT_TOKEN') . '/webhook';
-        $response = Telegram::setWebhook(['url' => $url]);
+        $url = 'https://'.env('DOMAIN').'/'. env('TELEGRAM_BOT_TOKEN') . '/webhook';
+        return response()->json($url, 200);
+        // $response = Telegram::setWebhook(['url' => $url]);
 
-        return $response == true ? 'success' : 'fail';
+        // return $response == true ? 'success' : 'fail';
     }
 }
