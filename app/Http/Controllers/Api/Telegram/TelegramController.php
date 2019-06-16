@@ -90,14 +90,14 @@ class TelegramController extends Controller
 
     public function handleRequest()
     {
-        $hooks = Telegram::getWebhookUpdates();
-        $updates = json_encode($hooks);
-        return $updates;
-        // $this->chat_id =  $updates->getMessage()->getChat()->getId();
-        // $this->username = $updates->getMessage()->getFrom()->getUsername();
-        // $this->firstname = $updates->getMessage()->getFrom()->getFirstName();
-        // $this->lastname = $updates->getMessage()->getFrom()->getLastName();
-        // $this->text = $updates->getMessage()->getText();
+        $updates = Telegram::getWebhookUpdates();
+        // $updates = json_encode($hooks);
+        $this->chat_id =  $updates->getMessage()->getChat()->getId();
+        $this->username = $updates->getMessage()->getFrom()->getUsername();
+        $this->firstname = $updates->getMessage()->getFrom()->getFirstName();
+        $this->lastname = $updates->getMessage()->getFrom()->getLastName();
+        $this->text = $updates->getMessage()->getText();
+        return response()->json($this->username, 200);
         // $text = strtolower($this->text);
         // preg_match('/(jadwal seminar) (.+)/', $text, $output);
         // if (count($output) > 0) {
