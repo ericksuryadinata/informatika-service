@@ -22,7 +22,8 @@ Route::namespace('Telegram')->group(function(){
     Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook','TelegramController@handleRequest');
 
     Route::prefix('settings')->group(function(){
-        Route::get('get-me','TelegramController@getMe');
+        Route::get('get-me','SettingsController@getMe');
+        Route::get('set-web-hook','SettingsController@setWebHook');
     });
 
 });
