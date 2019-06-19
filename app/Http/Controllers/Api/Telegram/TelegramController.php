@@ -23,7 +23,7 @@ class TelegramController extends Controller
         ];
 
         if ($parse_html) {
-            $data['parse_mode'] = 'html';
+            $data['parse_mode'] = 'HTML';
         }
 
         $response = Telegram::sendMessage($data);
@@ -75,7 +75,7 @@ class TelegramController extends Controller
                 $this->sendMessage($this->greeting().$this->firstname.' '.$this->lastname);
                 break;
             default:
-                $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :( , <br> update selanjutnya menerapkan NLP disini', true);
+                $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :(,'.PHP_EOL.'update selanjutnya menerapkan NLP disini', true);
                 break;
         }
     }
