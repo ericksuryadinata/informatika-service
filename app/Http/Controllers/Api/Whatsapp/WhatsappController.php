@@ -15,14 +15,14 @@ class WhatsappController extends Controller
         $body = $request->input('body');
         $pick = rand(1,5);
         if (!in_array($body, [1,2,3,4,5])) {
-            $response->message("Hiya! I'm thinking of a number between 1 and 5 - try to guess it!");
+            $twiml->message("Hiya! I'm thinking of a number between 1 and 5 - try to guess it!");
         } elseif ($body == $pick) {
-            $response->message("Yes! You guessed it!");
+            $twiml->message("Yes! You guessed it!");
         } else {
-            $response->message("Nope, it was actually $pick - Pick a new number to play again!");
+            $twiml->message("Nope, it was actually $pick - Pick a new number to play again!");
         }
 
-        print $response;
+        print $twiml;
 
         // Find your Account Sid and Auth Token at twilio.com/console
         // DANGER! This is insecure. See http://twil.io/secure
