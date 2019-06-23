@@ -13,9 +13,9 @@ class WhatsappController extends Controller
         $twiml = new Twiml;
         $body = $request->input('body');
         $pick = rand(1,5);
-        if (!in_array($guess, [1,2,3,4,5])) {
+        if (!in_array($body, [1,2,3,4,5])) {
             $response->message("Hiya! I'm thinking of a number between 1 and 5 - try to guess it!");
-        } elseif ($guess == $pick) {
+        } elseif ($body == $pick) {
             $response->message("Yes! You guessed it!");
         } else {
             $response->message("Nope, it was actually $pick - Pick a new number to play again!");
