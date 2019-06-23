@@ -27,3 +27,7 @@ Route::namespace('Telegram')->prefix('telegram')->group(function(){
     });
 
 });
+
+Route::namespace('Whatsapp')->prefix('whatsapp')->group(function(){
+    Route::post(env('TWILIO_ACCOUNT_SID') . '/webhook','WhatsappController@webhook');
+});
