@@ -10,12 +10,12 @@ use Twilio\Rest\Client;
 class WhatsappController extends Controller
 {
     protected $client;
-    
+
     public function __construct(){
         $accountSid = getenv('TWILIO_ACCOUNT_SID');
         $authToken = getenv('TWILIO_AUTH_TOKEN');
 
-        $this->$client = new Client($accountSid, $authToken);
+        $client = new Client($accountSid, $authToken);
     }
 
     public function webhook(Request $request)
