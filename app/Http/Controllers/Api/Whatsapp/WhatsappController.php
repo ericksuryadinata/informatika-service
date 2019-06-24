@@ -13,11 +13,7 @@ class WhatsappController extends Controller
     public function webhook(Request $request)
     {
         $twiml = new Twiml;
-        $body = $request->input('body');
-        $from = $request->input('to');
-        $to = $request->input('from');
-        $message = "You've type ".$body." from ".$from." to ".$to;
-        $twiml->message($body);
+        $twiml->message($request);
         return $this->xmlResponse($twiml);
         // $this->sendToWa($from,$message,$to);
     }
