@@ -9,14 +9,15 @@ use Twilio\Rest\Client;
 
 class WhatsappController extends Controller
 {
-    private $client;
-
+    protected $client;
+    
     public function __construct(){
         $accountSid = getenv('TWILIO_ACCOUNT_SID');
         $authToken = getenv('TWILIO_AUTH_TOKEN');
 
-        $client = new Client($accountSid, $authToken);
+        $this->$client = new Client($accountSid, $authToken);
     }
+
     public function webhook(Request $request)
     {
         $twiml = new Twiml;
