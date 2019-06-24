@@ -17,7 +17,7 @@ class WhatsappController extends Controller
         $from = $request->input('to');
         $to = $request->input('from');
         $message = "You've type ".$body;
-        return $this->sendToWa($from,$message,$to);
+        $this->sendToWa($from,$message,$to);
     }
 
     private function sendToWa($from, $message, $to)
