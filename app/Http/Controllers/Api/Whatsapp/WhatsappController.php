@@ -9,14 +9,6 @@ use Twilio\Rest\Client;
 
 class WhatsappController extends Controller
 {
-    protected $client;
-
-    public function __construct(){
-        $accountSid = getenv('TWILIO_ACCOUNT_SID');
-        $authToken = getenv('TWILIO_AUTH_TOKEN');
-
-        $client = new Client($accountSid, $authToken);
-    }
 
     public function webhook(Request $request)
     {
@@ -30,7 +22,11 @@ class WhatsappController extends Controller
 
     private function sendToWa($from, $message, $to)
     {
-        $this->$client->messages->create(
+        $accountSid = getenv('TWILIO_ACCOUNT_SID');
+        $authToken = getenv('TWILIO_AUTH_TOKEN');
+
+        $client = new Client($accountSid, $authToken);
+        $client->messages->create(
             $to,
             [
                 "body" => $message,
