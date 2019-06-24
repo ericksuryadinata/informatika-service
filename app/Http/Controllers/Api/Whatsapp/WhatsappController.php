@@ -21,8 +21,8 @@ class WhatsappController extends Controller
     {
         $twiml = new Twiml;
         $body = $request->input('body');
-        $from = $request->input('from');
-        $to = $request->input('to');
+        $from = $request->input('to');
+        $to = $request->input('from');
         $message = "You've type ".$body;
         return $this->sendToWa($from,$message,$to);
     }
