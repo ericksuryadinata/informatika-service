@@ -26,6 +26,7 @@ class DosenController extends Controller
             'geocode' => 'required',
             'lat_long_timestamp' => 'required'
         ]);
+
         if(!$validator->fails()){
             $phone_number = $request->phone_number;
             $imei = $request->imei;
@@ -69,7 +70,7 @@ class DosenController extends Controller
             'location_rfid' => 'required',
             'location_rfid_timestamp' => 'required'
         ]);
-        if(!$validation->fails()){
+        if(!$validator->fails()){
             $nip = $request->nip;
             $nidn = $request->nidn;
             $location_rfid = $request->location_rfid;
