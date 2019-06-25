@@ -53,7 +53,7 @@ class DosenController extends Controller
             }
             return response()->json('failed', 200);
         }else{
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors(), 400);
         }
     }
 
@@ -86,7 +86,7 @@ class DosenController extends Controller
             }
             return response()->json('failed', 200);
         }else{
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json($validator->errors(), 400);
         }
 
     }
