@@ -31,3 +31,10 @@ Route::namespace('Telegram')->prefix('telegram')->group(function(){
 Route::namespace('Whatsapp')->prefix('whatsapp')->group(function(){
     Route::post(env('TWILIO_ACCOUNT_SID') . '/webhook','WhatsappController@webhook');
 });
+
+Route::namespace('Data')->prefix('data')->group(function(){
+    Route::namespace('Dosen')->prefix('dosen')->group(function(){
+        Route::post('android', 'DosenController@androidUpdate');
+        Route::post('rfid', 'DosenController@rfidUpdate');
+    });
+});
