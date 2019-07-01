@@ -90,4 +90,8 @@ class DosenController extends Controller
         }
 
     }
+
+    public function getRandomData(){
+        return rand(10,1000);
+    }
 }
