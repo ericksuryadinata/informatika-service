@@ -36,5 +36,6 @@ Route::namespace('Data')->prefix('data')->group(function(){
     Route::namespace('Dosen')->prefix('dosen')->group(function(){
         Route::post('android', 'DosenController@androidUpdate');
         Route::post('rfid', 'DosenController@rfidUpdate');
+        Route::get('random','DosenController@getRandomData');
     });
 });
