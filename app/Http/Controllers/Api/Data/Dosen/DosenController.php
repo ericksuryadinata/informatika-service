@@ -83,6 +83,13 @@ class DosenController extends Controller
                 $dosen->location_rfid_timestamp = $location_rfid_timestamp;
                 $dosen->save();
                 return response()->json('success', 200);
+            }else{
+                Dosen::create([
+                    'nidn' => $nidn,
+                    'nip' => $nip,
+                    'location_rfid' => $location_rfid,
+                    'location_rfid_timestamp' => $location_rfid_timestamp
+                ]);
             }
             return response()->json('failed', 200);
         }else{
