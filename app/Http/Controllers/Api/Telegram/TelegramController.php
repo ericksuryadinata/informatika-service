@@ -86,8 +86,11 @@ class TelegramController extends Controller
             'base_uri' => getenv('ENDPOINT_NLP')
         ]);
 
-        $body['sentence'] = 'anu';
-        $response = $client->request('POST','data/test',['body' => $body]);
+        $response = $client->request('POST','data/test',[
+            'form_params' => [
+                'sentence' => 'lokasi pak aher'
+            ]
+        ]);
         $body = $response->send();
         return response()->json(json_decode($body->getContents()), 200);
     }
