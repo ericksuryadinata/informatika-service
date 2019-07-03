@@ -20,10 +20,10 @@ class WhatsappController extends Controller
         $this->sendToWa($from,$message,$to);
     }
 
-    public function extract($request){
+    public function extract($body){
          // Send a GET request to: http://www.foo.com/bar
         $response = Curl::to(getenv('ENDPOINT_NLP').'data/extraction')
-                        ->withData(array('sentence' => 'lokasi pak aher'))
+                        ->withData(array('sentence' => $body))
                         ->post();
         $response = json_decode($response);
         $reply = $response->result->answer;
