@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Twilio\Twiml;
 use Twilio\Rest\Client;
+use Ixudra\Curl\Facades\Curl;
+
 
 class WhatsappController extends Controller
 {
