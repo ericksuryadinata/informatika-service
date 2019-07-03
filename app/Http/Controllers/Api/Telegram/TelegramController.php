@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Telegram;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\InformasiSeminarTa;
-use GuzzleHttp\Client;
+use Ixudra\Curl\Facades\Curl;
 use Telegram;
 
 class TelegramController extends Controller
@@ -81,17 +81,11 @@ class TelegramController extends Controller
         }
     }
 
-     public function extract(){
-        $client = new Client([
-            'base_uri' => getenv('ENDPOINT_NLP')
-        ]);
-
-        $response = $client->request('GET','data/test',[
-            'query' => [
-                'sentence' => 'lokasi pak aher'
-            ]
-        ]);
-        $body = $response->send();
-        return response()->json(json_decode($body->getContents()), 200);
+    public function extract(){
+         // Send a GET request to: http://www.foo.com/bar
+        $response = Curl::to(getenv('ENDPOINT_NLP').'data/extraction')
+                        ->withData(array('sentence' => 'lokasi pak aher'))
+                        ->post();
+        return response()->json(json_decode($response), 200);
     }
 }
