@@ -86,6 +86,8 @@ class TelegramController extends Controller
         $response = Curl::to(getenv('ENDPOINT_NLP').'data/extraction')
                         ->withData(array('sentence' => 'lokasi pak aher'))
                         ->post();
-        return response()->json(json_decode($response), 200);
+        $response = json_decode($response);
+        $reply = $response->result->answer;
+        return response()->json($reply, 200);
     }
 }

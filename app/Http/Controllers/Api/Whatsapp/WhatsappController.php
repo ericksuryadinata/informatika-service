@@ -16,8 +16,17 @@ class WhatsappController extends Controller
         $body = $request->Body;
         $from = $request->To;
         $to = $request->From;
+        $responseBot = $this->extract($body);
         $message = "You've type ".$body;
         $this->sendToWa($from,$message,$to);
+    }
+
+    public function extract($request){
+         // Send a GET request to: http://www.foo.com/bar
+        $response = Curl::to(getenv('ENDPOINT_NLP').'data/extraction')
+                        ->withData(array('sentence' => $request))
+                        ->post();
+        return response()->json(json_decode($response), 200);
     }
 
     private function sendToWa($from, $message, $to)
