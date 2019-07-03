@@ -86,8 +86,8 @@ class TelegramController extends Controller
             'base_uri' => getenv('ENDPOINT_NLP')
         ]);
 
-        $response = $client->request('POST','data/test',[
-            'form_params' => [
+        $response = $client->request('GET','data/test',[
+            'query' => [
                 'sentence' => 'lokasi pak aher'
             ]
         ]);
