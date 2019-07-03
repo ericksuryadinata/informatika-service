@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Telegram;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\InformasiSeminarTa;
+use GuzzleHttp\Client;
 use Telegram;
 
 class TelegramController extends Controller
@@ -78,5 +79,19 @@ class TelegramController extends Controller
                 $this->sendMessage('sayang sekali '.$this->username.' perintah tersebut masih belum saya pahami :(,'.PHP_EOL.'update selanjutnya menerapkan NLP disini', true);
                 break;
         }
+    }
+
+     public function extract(){
+        $client = new Client([
+            'base_uri' => getenv('ENDPOINT_NLP')
+        ]);
+
+        $response = $client->request('POST','data/extraction',[
+            'form_params' => [
+                'sentence' => 'lokasi pak aher'
+            ]
+        ]);
+        $body = $response->getBody();
+        return response()->json(json_decode($body->getContents()), 200);
     }
 }
