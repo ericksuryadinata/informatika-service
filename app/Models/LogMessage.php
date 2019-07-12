@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LogWhatsapp extends Model
+class LogMessage extends Model
 {
     protected $fillable = [
-        'log'
+        'messages', 'answer'
     ];
 }
