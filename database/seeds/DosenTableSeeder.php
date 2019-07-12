@@ -12,17 +12,20 @@ class DosenTableSeeder extends Seeder
      */
     public function run()
     {
+        Schema::disableForeignKeyConstraints();
         Dosen::truncate();
         $data = [
             [
-                'uuid' => null,
-                'nip' => '20460940401',
-                'nama' => 'Geri Kusnanto, S.Kom., MM.',
+                'uuid' => '111',
+                'nip' => '20460960502',
+                'nama' => 'Ir. Sugiono, MT',
                 'jenis_kelamin' => 'L',
-                'alamat' => 'Jl. SiwalanKerto Utara II/39 Surabaya ( Nginden Baru VIII/B-20 Perum Dosen Untag)',
-                'nomor_telepon' => '08155015181',
-                'imei' => null,
+                'alamat' => 'Regency Kuda Dua Blok C-10 Jagir Wonokromo, Surabaya',
+                'nomor_telepon' => '0811377133',
+                'imei' =>'111',
             ]
         ];
+        Schema::enableForeignKeyConstraints();
+        Dosen::insert($data);
     }
 }

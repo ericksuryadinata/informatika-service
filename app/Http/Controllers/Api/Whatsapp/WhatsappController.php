@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Twilio\Twiml;
 use Twilio\Rest\Client;
 use Ixudra\Curl\Facades\Curl;
+use App\Models\Dosen;
+use App\Models\LokasiDosen;
 
 
 class WhatsappController extends Controller
@@ -23,11 +25,14 @@ class WhatsappController extends Controller
     }
 
     public function extract($body){
-        $response = Curl::to(getenv('ENDPOINT_NLP').'data/extraction')
+        $response = Curl::to('http://127.0.0.1:3333/api/v1/data/extraction')
                         ->withData(array('sentence' => $body))
                         ->post();
         $response = json_decode($response);
-        $reply = $response->result->answer;
+        $entities = $response->result->entities[0]->option;
+        $dosen = Dosen::where('nama','like', '%'.$entities.'%')->first();
+        $lokasi = LokasiDosen::where('nip',$dosen->nip)->first();
+        $reply = $response->result->answer.' '.$lokasi->location_rfid;
         return $reply;
     }
 
