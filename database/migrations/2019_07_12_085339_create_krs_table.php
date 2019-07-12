@@ -14,15 +14,15 @@ class CreateKrsTable extends Migration
     public function up()
     {
         Schema::create('krs', function (Blueprint $table) {
-            $table->string('nip', 11);
-            $table->string('nbi', 10);
-            $table->string('mata_kuliah');
-            $table->string('tahun_ajaran',6);
-            $table->string('kelas',2);
-            $table->string('ruang',4);
-            $table->integer('jumlah',3);
-            $table->string('jam',6);
-            $table->string('hari',7);
+            $table->string('nip', 11)->comment('nip dosen');
+            $table->string('nbi', 10)->comment('nbi mahasiswa');
+            $table->string('mata_kuliah')->comment('mata kuliah');
+            $table->string('tahun_ajaran',6)->comment('tahun ajaran');
+            $table->string('kelas',2)->comment('kelas mata kuliah');
+            $table->string('ruang',4)->comment('ruang mata kuliah');
+            $table->integer('jumlah',3)->comment('jumlah peserta ruang');
+            $table->string('jam',6)->comment('jam mata kuliah');
+            $table->string('hari',7)->comment('hari mata kuliah');
             $table->timestamps();
 
             $table->foreign('nbi')->references('nbi')->on('mahasiswa')->onDelete('cascade');

@@ -14,9 +14,9 @@ class CreateProsedurTable extends Migration
     public function up()
     {
         Schema::create('prosedur', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('key');
-            $table->text('value');
+            $table->increments('id')->comment('primary key');
+            $table->string('key')->comment('kata kunci prosedur');
+            $table->text('value')->comment('prosedur');
             $table->timestamps();
         });
     }

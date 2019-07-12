@@ -14,13 +14,13 @@ class CreateDosenTable extends Migration
     public function up()
     {
         Schema::create('dosen', function (Blueprint $table) {
-            $table->string('uuid')->unique();
-            $table->string('nip',11)->primary();
-            $table->string('nama',75);
-            $table->string('jenis_kelamin',1);
-            $table->string('alamat',120)->nullable();
-            $table->string('nomor_telepon',16)->unique();
-            $table->string('imei',60)->unique();
+            $table->string('uuid')->unique()->comment('uuid dosen');
+            $table->string('nip',11)->primary()->comment('nip dosen');
+            $table->string('nama',75)->comment('nama dosen');
+            $table->string('jenis_kelamin',1)->comment('jenis kelamin dosen');
+            $table->string('alamat',120)->nullable()->comment('alamat dosen');
+            $table->string('nomor_telepon',16)->unique()->comment('nomer telepon dosen');
+            $table->string('imei',60)->unique()->comment('imei dosen');
             $table->timestamps();
         });
     }

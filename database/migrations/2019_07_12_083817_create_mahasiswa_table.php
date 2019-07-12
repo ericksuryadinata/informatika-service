@@ -14,11 +14,11 @@ class CreateMahasiswaTable extends Migration
     public function up()
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->string('nbi',10)->primary();
-            $table->string('nama',120);
-            $table->string('alamat',120)->nullable();
-            $table->string('jenis_kelamin',1);
-            $table->string('kurikulum',4);
+            $table->string('nbi',10)->primary()->comment('nbi mahasiswa');
+            $table->string('nama',120)->comment('nama mahasiswa');
+            $table->string('alamat',120)->nullable()->comment('alamat mahasiswa');
+            $table->string('jenis_kelamin',1)->comment('jenis kelamin mahasiswa');
+            $table->string('kurikulum',4)->comment('kurikulum mahasiswa');
             $table->timestamps();
         });
     }
