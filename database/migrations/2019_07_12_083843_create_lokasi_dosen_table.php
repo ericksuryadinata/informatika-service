@@ -15,13 +15,15 @@ class CreateLokasiDosenTable extends Migration
     {
         Schema::create('lokasi_dosen', function (Blueprint $table) {
             $table->string('nip', 11);
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->text('geocode');
-            $table->timestamp('lat_long_timestamp');
-            $table->string('location_rfid');
-            $table->timestamp('location_timestamp');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->text('geocode')->nullable();
+            $table->timestamp('lat_long_timestamp')->nullable();
+            $table->string('location_rfid')->nullable();
+            $table->timestamp('location_timestamp')->nullable();
             $table->timestamps();
+
+            $table->foreign('nip')->references('nip')->on('dosen')->onDelete('cascade');
         });
     }
 

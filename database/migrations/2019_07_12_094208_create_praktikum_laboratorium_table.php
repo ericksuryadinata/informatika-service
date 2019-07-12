@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDosenTable extends Migration
+class CreatePraktikumLaboratoriumTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateDosenTable extends Migration
      */
     public function up()
     {
-        Schema::create('dosen', function (Blueprint $table) {
-            $table->string('uuid')->unique();
-            $table->string('nip',11)->primary();
+        Schema::create('praktikum_laboratorium', function (Blueprint $table) {
+            $table->string('kode',6)->primary();
+            $table->string('laboratorium_kode',3);
             $table->string('nama',75);
-            $table->string('jenis_kelamin',1);
-            $table->string('alamat',120)->nullable();
-            $table->string('nomor_telepon',16)->unique();
-            $table->string('imei',60)->unique();
             $table->timestamps();
+
+            $table->foreign('laboratorium_kode')->references('kode')->on('laboratorium')->onDelete('cascade');
         });
     }
 
@@ -32,6 +30,6 @@ class CreateDosenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dosen');
+        Schema::dropIfExists('praktikum_laboratorium');
     }
 }

@@ -10,6 +10,6 @@ class KRS extends Model
 
     protected $fillable = [
         'nip', 'nbi', 'mata_kuliah', 'tahun_ajaran',
-        'kelas', 'ruang', 'jumlah', 'jam', 'hari',
+        'kelas', 'ruang', 'jumlah', 'jam', 'hari'
     ];
 }
