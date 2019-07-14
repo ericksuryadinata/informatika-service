@@ -16,7 +16,7 @@ class CreateKrsTable extends Migration
         Schema::create('krs', function (Blueprint $table) {
             $table->char('nip', 11)->comment('nip dosen');
             $table->char('nbi', 10)->comment('nbi mahasiswa');
-            $table->unsignedInteger('mata_kuliah_id')->comment('mata kuliah');
+            $table->char('mata_kuliah_kode')->comment('mata kuliah');
             $table->char('semester',1)->comment('semester');
             $table->char('tahun_ajaran',4)->comment('tahun ajaran');
             $table->char('kelas',2)->comment('kelas mata kuliah');
@@ -27,7 +27,7 @@ class CreateKrsTable extends Migration
 
             $table->foreign('nbi')->references('nbi')->on('mahasiswa')->onDelete('cascade');
             $table->foreign('nip')->references('nip')->on('dosen')->onDelete('cascade');
-            $table->foreign('mata_kuliah_id')->references('id')->on('mata_kuliah')->onDelete('cascade');
+            $table->foreign('mata_kuliah_kode')->references('kode')->on('mata_kuliah')->onDelete('cascade');
             $table->foreign('hari_kode')->references('kode')->on('hari')->onDelete('cascade');
         });
     }

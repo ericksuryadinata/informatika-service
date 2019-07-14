@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMataKuliahsTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateMataKuliahsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mata_kuliah', function (Blueprint $table) {
-            $table->char('kode',6);
-            $table->string('nama',30);
-            $table->char('kurikulum',4);
+        Schema::create('settings', function (Blueprint $table) {
+            $table->string('kode');
+            $table->string('table');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateMataKuliahsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mata_kuliahs');
+        Schema::dropIfExists('settings');
     }
 }

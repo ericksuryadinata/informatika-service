@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\InformasiSeminarTa;
+use App\Models\InformasiUjianTa;
 
-class InformasiSeminarTaTableSeeder extends Seeder
+class InformasiUjianTaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class InformasiSeminarTaTableSeeder extends Seeder
      */
     public function run()
     {
-        InformasiSeminarTa::truncate();
+        InformasiUjianTa::truncate();
         $data = [
             [
                 'nbi' => 1461505276,
@@ -38,6 +38,6 @@ class InformasiSeminarTaTableSeeder extends Seeder
             ]
         ];
 
-        InformasiSeminarTa::insert($data);
+        InformasiUjianTa::insert($data);
     }
 }

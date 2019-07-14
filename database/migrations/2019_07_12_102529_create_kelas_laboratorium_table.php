@@ -28,6 +28,7 @@ class CreateKelasLaboratoriumTable extends Migration
             $table->foreign('asisten_laboratorium_id')->references('id')->on('asisten_laboratorium')->onDelete('cascade');
             $table->foreign('nip')->references('nip')->on('dosen')->onDelete('cascade');
             $table->foreign('jam_kode')->references('kode')->on('jam')->onDelete('cascade');
+            $table->foreign('hari_kode')->references('kode')->on('hari')->onDelete('cascade');
         });
     }
 
