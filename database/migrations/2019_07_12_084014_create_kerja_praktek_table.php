@@ -14,16 +14,15 @@ class CreateKerjaPraktekTable extends Migration
     public function up()
     {
         Schema::create('kerja_praktek', function (Blueprint $table) {
-            $table->string('nbi', 10)->comment('nbi mahasiswa');
-            $table->string('judul')->comment('judul kerja praktek');
-            $table->string('ketua_penguji', 75)->comment('ketua penguji kerja praktek');
-            $table->string('anggota_penguji_1', 75)->comment('anggota penguji kerja praktek');
-            $table->string('anggota_penguji_2', 75)->comment('anggota penguji kerja praktek');
-            $table->string('ruang', 25)->comment('ruang ujian kerja praktek');
-            $table->date('tanggal')->comment('tanggal ujian kerja praktek');
-            $table->smallInteger('periode', 1)->comment('periode ujian kerja praktek');
-            $table->year('tahun')->comment('tahun ujian kerja praktek');
-            $table->timestamps();
+            $table->char('nbi', 10)->comment('nbi mahasiswa');
+            $table->string('judul')->comment('judul seminar mahasiswa');
+            $table->string('ketua_penguji', 75)->comment('ketua penguji seminar');
+            $table->string('anggota_penguji_1', 75)->comment('anggota penguji seminar');
+            $table->string('anggota_penguji_2', 75)->comment('anggota penguji seminar');
+            $table->char('ruang', 8)->comment('ruang seminar');
+            $table->date('tanggal')->comment('tanggal seminar');
+            $table->unsignedSmallInteger('periode', 1)->comment('periode seminar');
+            $table->year('tahun')->comment('tahun seminar');
 
             $table->foreign('nbi')->references('nbi')->on('mahasiswa')->onDelete('cascade');
         });

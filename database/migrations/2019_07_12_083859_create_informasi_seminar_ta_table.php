@@ -14,16 +14,15 @@ class CreateInformasiSeminarTaTable extends Migration
     public function up()
     {
         Schema::create('informasi_seminar_ta', function (Blueprint $table) {
-            $table->string('nbi', 10)->comment('nbi mahasiswa');
+            $table->char('nbi', 10)->comment('nbi mahasiswa');
             $table->string('judul')->comment('judul seminar mahasiswa');
             $table->string('ketua_penguji',75)->comment('ketua penguji seminar');
             $table->string('anggota_penguji_1',75)->comment('anggota penguji seminar');
             $table->string('anggota_penguji_2',75)->comment('anggota penguji seminar');
-            $table->string('ruang',25)->comment('ruang seminar');
+            $table->char('ruang',8)->comment('ruang seminar');
             $table->date('tanggal')->comment('tanggal seminar');
-            $table->smallInteger('periode',1)->comment('periode seminar');
+            $table->unsignedSmallInteger('periode',1)->comment('periode seminar');
             $table->year('tahun')->comment('tahun seminar');
-            $table->timestamps();
 
             $table->foreign('nbi')->references('nbi')->on('mahasiswa')->onDelete('cascade');
         });

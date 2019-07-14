@@ -15,15 +15,14 @@ class CreateKelasLaboratoriumTable extends Migration
     {
         Schema::create('kelas_laboratorium', function (Blueprint $table) {
             $table->increments('id')->comment('primary key');
-            $table->string('praktikum_laboratorium_kode', 3)->comment('kode praktikum');
-            $table->string('nip',11)->comment('nip dosen');
+            $table->char('praktikum_laboratorium_kode', 3)->comment('kode praktikum');
+            $table->char('nip',11)->comment('nip dosen');
             $table->unsignedInteger('asisten_laboratorium_id')->comment('id asisten laboratorium');
             $table->string('nama', 75)->comment('nama kelas');
-            $table->string('tahun_ajaran',4)->comment('tahun ajaran kelas');
+            $table->char('tahun_ajaran',4)->comment('tahun ajaran kelas');
             $table->string('semester',1)->comment('semester kelas');
-            $table->string('jam_kode',2)->comment('kode jam');
-            $table->string('hari',7)->comment('hari kelas');
-            $table->timestamps();
+            $table->char('jam_kode',2)->comment('kode jam');
+            $table->char('hari_kode',1)->comment('hari kelas');
 
             $table->foreign('praktikum_laboratorium_kode')->references('kode')->on('praktikum_laboratorium')->onDelete('cascade');
             $table->foreign('asisten_laboratorium_id')->references('id')->on('asisten_laboratorium')->onDelete('cascade');

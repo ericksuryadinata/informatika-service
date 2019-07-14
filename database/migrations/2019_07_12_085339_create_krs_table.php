@@ -14,19 +14,21 @@ class CreateKrsTable extends Migration
     public function up()
     {
         Schema::create('krs', function (Blueprint $table) {
-            $table->string('nip', 11)->comment('nip dosen');
-            $table->string('nbi', 10)->comment('nbi mahasiswa');
-            $table->string('mata_kuliah')->comment('mata kuliah');
-            $table->string('tahun_ajaran',6)->comment('tahun ajaran');
-            $table->string('kelas',2)->comment('kelas mata kuliah');
-            $table->string('ruang',4)->comment('ruang mata kuliah');
-            $table->integer('jumlah',3)->comment('jumlah peserta ruang');
-            $table->string('jam',6)->comment('jam mata kuliah');
-            $table->string('hari',7)->comment('hari mata kuliah');
-            $table->timestamps();
+            $table->char('nip', 11)->comment('nip dosen');
+            $table->char('nbi', 10)->comment('nbi mahasiswa');
+            $table->unsignedInteger('mata_kuliah_id')->comment('mata kuliah');
+            $table->char('semester',1)->comment('semester');
+            $table->char('tahun_ajaran',4)->comment('tahun ajaran');
+            $table->char('kelas',2)->comment('kelas mata kuliah');
+            $table->char('ruang',4)->comment('ruang mata kuliah');
+            $table->unsignedSmallInteger('jumlah',3)->comment('jumlah peserta ruang');
+            $table->char('jam',6)->comment('jam mata kuliah');
+            $table->char('hari_kode',1)->comment('hari mata kuliah');
 
             $table->foreign('nbi')->references('nbi')->on('mahasiswa')->onDelete('cascade');
             $table->foreign('nip')->references('nip')->on('dosen')->onDelete('cascade');
+            $table->foreign('mata_kuliah_id')->references('id')->on('mata_kuliah')->onDelete('cascade');
+            $table->foreign('hari_kode')->references('kode')->on('hari')->onDelete('cascade');
         });
     }
 

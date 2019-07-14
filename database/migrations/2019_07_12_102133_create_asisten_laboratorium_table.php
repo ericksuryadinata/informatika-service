@@ -15,12 +15,11 @@ class CreateAsistenLaboratoriumTable extends Migration
     {
         Schema::create('asisten_laboratorium', function (Blueprint $table) {
             $table->increments('id')->comment('primary key');
-            $table->string('laboratorium_kode',3)->comment('kode laboratorium');
-            $table->string('kode',10)->comment('kode asisten laboratorium');
+            $table->char('laboratorium_kode',3)->comment('kode laboratorium');
+            $table->char('kode',10)->unique()->comment('kode asisten laboratorium');
             $table->string('nama',75)->comment('nama asisten laboratorium');
             $table->string('alamat',100)->comment('alamat asisten laboratorium');
-            $table->string('no_hp',13)->comment('no hp asisten laboratorium');
-            $table->timestamps();
+            $table->char('no_hp',13)->comment('no hp asisten laboratorium');
 
             $table->foreign('laboratorium_kode')->references('kode')->on('laboratorium')->onDelete('cascade');
         });

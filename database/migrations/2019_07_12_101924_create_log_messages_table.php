@@ -17,7 +17,6 @@ class CreateLogMessagesTable extends Migration
             $table->increments('id')->comment('primary key');
             $table->text('messages')->comment('pesan dari mahasiswa');
             $table->text('answer')->comment('jawaban dari sistem');
-            $table->timestamps();
         });
     }
 

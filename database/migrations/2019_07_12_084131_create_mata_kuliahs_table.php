@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJamTable extends Migration
+class CreateMataKuliahsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateJamTable extends Migration
      */
     public function up()
     {
-        Schema::create('jam', function (Blueprint $table) {
-            $table->char('kode',2)->primary()->comment('kode jam');
-            $table->char('jam_kuliah',5)->comment('jam kuliah');
+        Schema::create('mata_kuliah', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nama',30);
         });
     }
 
@@ -26,6 +26,6 @@ class CreateJamTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jam');
+        Schema::dropIfExists('mata_kuliahs');
     }
 }

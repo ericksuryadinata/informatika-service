@@ -17,7 +17,6 @@ class CreateProsedurTable extends Migration
             $table->increments('id')->comment('primary key');
             $table->string('key')->comment('kata kunci prosedur');
             $table->text('value')->comment('prosedur');
-            $table->timestamps();
         });
     }
 
