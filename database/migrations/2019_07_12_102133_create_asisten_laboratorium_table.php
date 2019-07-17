@@ -14,7 +14,7 @@ class CreateAsistenLaboratoriumTable extends Migration
     public function up()
     {
         Schema::create('asisten_laboratorium', function (Blueprint $table) {
-            $table->increments('id')->comment('primary key');
+            $table->increments('id')->index()->comment('primary key');
             $table->char('laboratorium_kode',3)->comment('kode laboratorium');
             $table->char('kode',10)->unique()->comment('kode asisten laboratorium');
             $table->string('nama',75)->comment('nama asisten laboratorium');

@@ -48,7 +48,7 @@ class DosenTableSeeder extends Seeder
                 'nama' => 'Ery Sadewa Yudha Wrahatnala, S.Kom., MM',
                 'jenis_kelamin' => 'L',
                 'alamat' => 'Taman Pondok Legi 2 / B - 3 Pepelegi – Waru, Sidoarjo',
-                'nomor_telepon' => '0818514175',
+                'nomor_telepon' => '081330707097',
                 'imei' => '114',
             ],
             [

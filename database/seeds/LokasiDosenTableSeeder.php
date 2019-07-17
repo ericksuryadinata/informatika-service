@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\LokasiDosen;
+use Carbon\Carbon;
 
 class LokasiDosenTableSeeder extends Seeder
 {
@@ -16,37 +17,48 @@ class LokasiDosenTableSeeder extends Seeder
         LokasiDosen::truncate();
         $data = [
             [
-                'nip' => '20460960502'
+                'nip' => '20460960502',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20460940401'
+                'nip' => '20460940401',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20450000515'
+                'nip' => '20450000515',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20460950416'
+                'nip' => '20460950416',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20460000512'
+                'nip' => '20460000512',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20460110602'
+                'nip' => '20460110602',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20450920281'
+                'nip' => '20450920281',
+                'timestamp' => Carbon::now()
             ],
             [
                 'nip' => '20460030555',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20410960490'
+                'nip' => '20410960490',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20460950407'
+                'nip' => '20460950407',
+                'timestamp' => Carbon::now()
             ],
             [
-                'nip' => '20460000513'
+                'nip' => '20460000513',
+                'timestamp' => Carbon::now()
             ]
         ];
         Schema::enableForeignKeyConstraints();

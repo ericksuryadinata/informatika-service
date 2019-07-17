@@ -14,7 +14,7 @@ class CreateKelasLaboratoriumTable extends Migration
     public function up()
     {
         Schema::create('kelas_laboratorium', function (Blueprint $table) {
-            $table->increments('id')->comment('primary key');
+            $table->increments('id')->index()->comment('primary key');
             $table->char('praktikum_laboratorium_kode', 3)->comment('kode praktikum');
             $table->char('nip',11)->comment('nip dosen');
             $table->unsignedInteger('asisten_laboratorium_id')->comment('id asisten laboratorium');

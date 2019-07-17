@@ -14,7 +14,7 @@ class CreateHarisTable extends Migration
     public function up()
     {
         Schema::create('hari', function (Blueprint $table) {
-            $table->char('kode',1)->primary()->comment('kode_hari');
+            $table->char('kode',1)->primary()->index()->comment('kode_hari');
             $table->char('nama',7)->comment('nama hari');
         });
     }

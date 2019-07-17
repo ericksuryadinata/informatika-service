@@ -14,8 +14,9 @@ class CreateJamTable extends Migration
     public function up()
     {
         Schema::create('jam', function (Blueprint $table) {
-            $table->char('kode',2)->primary()->comment('kode jam');
-            $table->char('jam_kuliah',5)->comment('jam kuliah');
+            $table->char('kode',2)->primary()->index()->comment('kode jam');
+            $table->char('jam_kuliah_masuk',5)->comment('jam kuliah masuk');
+            $table->char('jam_kuliah_keluar', 5)->comment('jam kuliah selesai');
         });
     }
 

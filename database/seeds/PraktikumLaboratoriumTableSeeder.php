@@ -102,7 +102,7 @@ class PraktikumLaboratoriumTableSeeder extends Seeder
             ],
             [
                 'kode' => 4652,
-                'nama' => 'Pengolahan Citra Digital             ',
+                'nama' => 'Pengolahan Citra Digital',
                 'laboratorium_kode' => 465
             ]
         ];

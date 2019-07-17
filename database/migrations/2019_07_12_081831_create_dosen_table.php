@@ -15,7 +15,7 @@ class CreateDosenTable extends Migration
     {
         Schema::create('dosen', function (Blueprint $table) {
             $table->char('uuid',25)->unique()->comment('uuid dosen');
-            $table->char('nip',11)->primary()->comment('nip dosen');
+            $table->char('nip',11)->primary()->index()->comment('nip dosen');
             $table->string('nama',75)->comment('nama dosen');
             $table->char('jenis_kelamin',1)->comment('jenis kelamin dosen');
             $table->string('alamat',120)->nullable()->comment('alamat dosen');

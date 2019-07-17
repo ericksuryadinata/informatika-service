@@ -21,7 +21,7 @@ class CreateKerjaPraktekTable extends Migration
             $table->string('anggota_penguji_2', 75)->comment('anggota penguji seminar');
             $table->char('ruang', 8)->comment('ruang seminar');
             $table->date('tanggal')->comment('tanggal seminar');
-            $table->unsignedSmallInteger('periode', 1)->comment('periode seminar');
+            $table->unsignedSmallInteger('periode', false)->comment('periode seminar');
             $table->year('tahun')->comment('tahun seminar');
 
             $table->foreign('nbi')->references('nbi')->on('mahasiswa')->onDelete('cascade');
