@@ -161,7 +161,7 @@ class MataKuliahTableSeeder extends Seeder
             ],
             [
                 'kode' => 4616212,
-                'nama' => 'MANAJEMEN PROYEK  PERANGKAT LUNAK',
+                'nama' => 'MANAJEMEN PROYEK PERANGKAT LUNAK',
                 'sks' => 2,
                 'kurikulum' => '2016'
             ],
@@ -227,7 +227,7 @@ class MataKuliahTableSeeder extends Seeder
             ],
             [
                 'kode' => 4616223,
-                'nama' => 'INTERAKSI MANUSIA-KOMPUTER',
+                'nama' => 'INTERAKSI MANUSIA - KOMPUTER',
                 'sks' => 3,
                 'kurikulum' => '2016'
             ],

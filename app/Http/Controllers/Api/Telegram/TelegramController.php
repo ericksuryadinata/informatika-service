@@ -81,7 +81,8 @@ class TelegramController extends Controller
         }
     }
 
-    public function extract(){
+    public function extract()
+    {
          // Send a GET request to: http://www.foo.com/bar
         $response = Curl::to(getenv('ENDPOINT_NLP').'data/extraction')
                         ->withData(array('sentence' => 'lokasi pak aher'))
