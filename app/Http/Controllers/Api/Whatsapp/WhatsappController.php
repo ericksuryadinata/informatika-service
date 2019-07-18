@@ -29,10 +29,7 @@ class WhatsappController extends Controller
                         ->withData(array('sentence' => $body))
                         ->post();
         $response = json_decode($response);
-        $entities = $response->result->entities[0]->option;
-        $dosen = Dosen::where('nama', 'like', '%'.$entities.'%')->first();
-        $lokasi = LokasiDosen::where('nip', $dosen->nip)->first();
-        $reply = $response->result->answer.' '.$lokasi->location_rfid;
+        $reply = $response->result;
         return $reply;
     }
 
