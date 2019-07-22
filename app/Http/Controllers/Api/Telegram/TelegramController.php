@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Api\Telegram;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\InformasiSeminarTa;
 use Ixudra\Curl\Facades\Curl;
 use Telegram;
 
