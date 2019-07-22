@@ -47,11 +47,11 @@ class TelegramController extends Controller
         $this->lastname = $updates->getMessage()->getFrom()->getLastName();
         $this->text = $updates->getMessage()->getText();
         $text = strtolower($this->text);
-        if($text === '/start'){
+        if ($text === '/start') {
             $this->sendMessage($this->startMessage());
-        }else{
+        } else {
             $message = $this->extract($text);
-            $this->sendMessage($message, TRUE);
+            $this->sendMessage($message, true);
         }
     }
 
