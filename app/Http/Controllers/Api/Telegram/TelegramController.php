@@ -49,10 +49,10 @@ class TelegramController extends Controller
         $text = strtolower($this->text);
         if($text === '/start'){
             $this->sendMessage($this->startMessage());
+        }else{
+            $message = $this->extract($text);
+            $this->sendMessage($message, TRUE);
         }
-
-        $message = $this->extract($text);
-        $this->sendMessage($message,TRUE);
     }
 
     public function extract($body)
