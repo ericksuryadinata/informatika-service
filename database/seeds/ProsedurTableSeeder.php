@@ -96,7 +96,7 @@ class ProsedurTableSeeder extends Seeder
                 'value' => 'a'
             ],
             [
-                'key' => 'cariJadwalPendaftaranTA',
+                'key' => 'cariJadwalPendaftaranUjianTA',
                 'value' => 'b'
             ],
             [
