@@ -33,3 +33,8 @@ Route::namespace('Whatsapp')->prefix('whatsapp')->group(function(){
     Route::get('extract/{body}','WhatsappController@extract');
 });
 
+Route::namespace('UnitTesting')->prefix('unit-testing')->group(function(){
+    Route::get('/', 'UnitTestingController@index');
+    Route::get('/generate', 'UnitTestingController@generate');
+});
+

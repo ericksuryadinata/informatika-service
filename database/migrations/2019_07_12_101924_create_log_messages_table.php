@@ -18,6 +18,7 @@ class CreateLogMessagesTable extends Migration
             $table->text('messages')->comment('pesan dari mahasiswa');
             $table->text('answer')->comment('jawaban dari sistem');
             $table->string('intent')->comment('intent yang berhasil di olah');
+            $table->string('target_intent')->nullable()->comment('intent yang ingin dicapai di olah');
             $table->string('step')->comment('step dimana proses ini disimpan');
             $table->timestamps();
         });

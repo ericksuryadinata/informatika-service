@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class LogMessage extends Model
 {
     protected $fillable = [
-        'messages', 'answer'
+        'messages', 'answer', 'intent', 'target_intent', 'step'
     ];
 }
