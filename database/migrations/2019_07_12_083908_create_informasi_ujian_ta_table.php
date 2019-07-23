@@ -22,7 +22,7 @@ class CreateInformasiUjianTaTable extends Migration
             $table->char('ruang', 8)->comment('ruang seminar');
             $table->date('tanggal')->comment('tanggal seminar');
             $table->unsignedSmallInteger('periode', false)->comment('periode seminar');
-            $table->year('tahun')->comment('tahun seminar');
+            $table->char('tahun',12)->comment('tahun seminar');
 
             $table->foreign('nbi')->references('nbi')->on('mahasiswa')->onDelete('cascade');
         });
